@@ -50,9 +50,9 @@ export default function App() {
   }
 
   const subirLogo = () =>{
-    var storageRef = db.storage().ref();
-    var file = logo;
-    storageRef.put(file).then(function(snapshot) {
+    var storage = db.storage();
+    const Newref = storage.ref('images').child(logo);
+    Newref.put(logo).then(function(snapshot) {
       console.log(snapshot);
     })
     
@@ -61,7 +61,7 @@ export default function App() {
   function handleSignUp(event) {
     clearErrors();
     event.preventDefault();
-   
+    subirLogo();
 
     db.auth().createUserWithEmailAndPassword(email, password).then((credential) => {
       createUser(credential.user.uid);
