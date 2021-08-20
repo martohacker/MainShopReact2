@@ -1,0 +1,198 @@
+
+
+
+.imagenLogin{
+    width: 50%;
+    position: relative;
+    left: 50%;
+    margin: 0%;
+    margin-top:13%;
+}
+
+  
+  button {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #603bbb;
+    cursor: pointer;
+  }
+
+  .imagen-container{
+      position: relative;
+      left: 70%;
+      max-height: 339.47418px;
+      width: 800px;
+  }
+  
+  .login{
+    position: relative;
+    right: 120%;
+    padding: 0% 5%;
+    display: flex;
+    margin-top: 2%;
+  
+  
+  }
+  
+  
+  .login .loginContainer {
+    border: solid 1px rgb(36, 172, 218);
+    border-radius: 2%;
+    padding: 60px;
+    margin: auto;
+    position: relative;
+    right: 30%;
+    width: 100%;
+    max-width: 520px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.7);
+  
+  }
+  
+  .login .loginContainer label {
+    color: black;
+    margin: 14px 0;
+    display: block;
+    font-size: 22px;
+    line-height: 1;
+  }
+  
+  .login .loginContainer input {
+    width: 100%;
+    border: solid 1px rgb(36, 172, 218);
+    border-radius: 10px;
+    outline: none;
+    font-size: 70%;
+    padding: 5%;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    letter-spacing: 1px;
+  }
+  
+  .login .loginContainer .btnContainer {
+    width: 100%;
+    padding: 10% 0;
+  }
+  
+  .login .loginContainer .btnContainer p {
+    margin: 10% 0 0 0;
+    text-align: right;
+    color:rgb(36, 172, 218);
+  }
+  
+  .login .loginContainer .btnContainer p span {
+    color:rgb(36, 172, 218);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 1%;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+  }
+  
+  .login .loginContainer .btnContainer p span:hover {
+    color: red;
+  }
+  
+  
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(
+      ellipse at left bottom,
+      rgba(22, 24, 47, 1) 0%,
+      rgba(38, 20, 72, 0.9) 59%,
+      rgba(17, 27, 75, 0.9) 100%
+    );
+  }
+  
+  .hero nav {
+    background: #603bbb;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .hero nav h2 {
+    color: #fff;
+  }
+  
+  .hero nav button {
+    width: 86px;
+    padding: 8px 0;
+    background: #3a2b58;
+  }
+  
+
+.logoHome{
+  width: 35%;
+  right: 1200%;
+} 
+  
+.navBarHeader{
+position: fixed;
+top: 0%;
+width: 100%;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+}
+
+.main {
+  background-color: #E4FFFF;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome{
+  position: relative;
+  left: 45%;
+  color:rgb(36, 172, 218);
+}
+.logout{
+  width: 7%;
+  position: relative;
+  left: 70%;
+}
+
+.Botones{
+  min-height: 900%;
+  width: 80%;
+  margin-top: 1%;
+}
+
+.MiEcommerce{
+  min-height: 900%;
+  width: 80%;
+  position: relative;
+  left: 20%;
+  margin-top: 1%;
+}
+
+.BotonMiCuenta{
+  min-height: 1120%;
+  width: 80%;
+  position: relative;
+  left: 20%;
+  top: 1050%;
+}
+
+.BotonMisEnvios{
+  min-height: 1120%;
+  width: 80%;
+  position: relative;
+  top: 1050%;
+}
+
