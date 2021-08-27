@@ -11,14 +11,17 @@ const {productos} = props;
          <img src={Logo} className="logo"></img>
         
     <Row style={{marginLeft:0, marginRight:0}}>
-        
-        {productos.map((prod)=>(
+    
+    {productos.map((prod)=>(
             <CardProducto key={prod.idProducto} producto={prod} />
         )) }
+        
         </Row>
    </>
     )
 }
+
+
 
 
 /*<Col md="3">

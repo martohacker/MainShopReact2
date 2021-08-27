@@ -4,7 +4,8 @@ import "../templates.css";
 import remera from "./RemeraAzul.png";
 import ComponenteAgregar from "./ComponenteAgregar";
 import ComponenteEliminar from "./ComponenteEliminar";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import ModalAgregar from "./ModalAgregar";
 
 export default function CardProducto(props){
     const {producto} = props;
@@ -17,25 +18,10 @@ export default function CardProducto(props){
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
                 </Card.Body>
                 <BrowserRouter>
-                <Switch>
-                    <Route
-                    path='./ComponenteAgregar'
-                    exact 
-                    ComponenteAgregar
-                    Button>
-                    </Route>
-                    <Route
-                        path='./ComponenteEliminar'
-                        exact 
-                        ComponenteEliminar
-                    />
-                </Switch>
+                <ModalAgregar id={producto.idProducto}/>
                 </BrowserRouter>
-                <Button onClick="" className="botonEditar"  style={{fontSize:'80%', backgroundColor: 'green', borderColor:'#343a40'}}>Editar</Button>
-                <Button className="botonEliminar" style={{fontSize:'80%', backgroundColor: 'red', borderColor:'#343a40'}}>Eliminar</Button>
+                <Button onClick="eliminarProducto()" className="botonEliminar" style={{fontSize:'80%', backgroundColor: 'red', borderColor:'#343a40'}}>Eliminar</Button>
              </Card>
         </Col>
-
     )
 }
-

@@ -97,7 +97,7 @@ export default function App() {
 
 
 
-    axios.post("http://localhost:4000/MarcaRegistro", params).then((res) => {
+    axios.post("https://mainshop-nodejs.herokuapp.com/MarcaRegistro", params).then((res) => {
       console.log(res.data);
       const respuesta = res.data;
       if(respuesta) {

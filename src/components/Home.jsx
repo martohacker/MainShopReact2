@@ -30,7 +30,7 @@ export default function Home(props){
     const state = store.getState();
     const id = state.id;
     console.log(id);
-      axios.get("http://localhost:4000/ListadoProducto?id="+id).then((res) => {
+      axios.get("https://mainshop-nodejs.herokuapp.com/ListadoProducto?id="+id).then((res) => {
           setProductos(res.data);
           console.log(res.data);
       }).catch((error) => {
