@@ -2,14 +2,21 @@ import { Col, Container, Row, InputGroup, FormControl } from "react-bootstrap";
 import CardProducto from "./componentesTemplates/CardProducto";
 import Logo from "./componentesTemplates/LogoNike.png"
 import './templates.css';
+import ModalAgregar  from "./componentesTemplates/ModalAgregar";
 
 
 export default function Template1(props) {
+
+
 const {productos} = props;
     return (
         <>
          <img src={Logo} className="logo"></img>
-        
+     <Row>
+         <Col md="2">
+             <ModalAgregar/>
+         </Col>
+    </Row>   
     <Row style={{marginLeft:0, marginRight:0}}>
     
     {productos.map((prod)=>(

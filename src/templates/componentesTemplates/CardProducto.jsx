@@ -2,10 +2,9 @@ import { Card, Button } from "react-bootstrap";
 import { Col, Container, Row } from "react-bootstrap";
 import "../templates.css";
 import remera from "./RemeraAzul.png";
-import ComponenteAgregar from "./ComponenteAgregar";
-import ComponenteEliminar from "./ComponenteEliminar";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import ModalAgregar from "./ModalAgregar";
+import ModalEditar from "./ModalEditar";
+import ModalEliminar from "./ModalEliminar";
 
 export default function CardProducto(props){
     const {producto} = props;
@@ -17,10 +16,8 @@ export default function CardProducto(props){
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
                 </Card.Body>
-                <BrowserRouter>
-                <ModalAgregar id={producto.idProducto}/>
-                </BrowserRouter>
-                <Button onClick="eliminarProducto()" className="botonEliminar" style={{fontSize:'80%', backgroundColor: 'red', borderColor:'#343a40'}}>Eliminar</Button>
+                <ModalEditar id={producto.idProducto}/>
+                <ModalEliminar idProducto={producto.idProducto} />
              </Card>
         </Col>
     )

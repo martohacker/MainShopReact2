@@ -8,7 +8,6 @@ import "./Home.css";
 import Header from "./Header";
 import Template1 from "../templates/Template1"
 import store from '../store/index';
-import Agregar from "../templates/componentesTemplates/ComponenteAgregar";
 
 
 
