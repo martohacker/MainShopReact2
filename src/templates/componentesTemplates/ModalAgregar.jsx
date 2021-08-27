@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col, Modal} from 'react-bootstrap';
 import axios from "axios";
 import store from '../../store/index';
