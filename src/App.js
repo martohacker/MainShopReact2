@@ -34,6 +34,7 @@ export default function App() {
   const [idPlantilla, setIdPlantilla] = useState("sadasdfgege3432");
   const [respuestaEnPantalla, setRespuestaEnPantalla] = useState("");
   const [logoEmpresa, setLogoEmpresa] = useState("");
+  const [tipoUsuario, setTipo] = useState("");
 
 
 
@@ -201,6 +202,9 @@ export default function App() {
         case "logoEmpresa":
           setLogoEmpresa(event.target.value);
           break;
+       case "tipoUsuario":
+            setTipo(event.target.value);
+            break;
     }
   };
 
@@ -242,6 +246,7 @@ export default function App() {
                 setHasAccount={setHasAccount}
                 emailError={emailError}
                 passwordError={passwordError}
+                tipoUsuario={tipoUsuario}
                 handleChange={handleChange}
                 respuesta={respuestaEnPantalla} />
             </Col>
