@@ -34,6 +34,7 @@ export default function ModalEliminar(props){
         }).catch((error) => {
           console.log(error)
         });
+        handleClose();
     }
 
     return (
@@ -50,7 +51,7 @@ export default function ModalEliminar(props){
               <Button variant="secondary" onClick={handleClose}>
                 Cancelar
               </Button>
-              <Button variant="primary" onClick={handleClose, ()=>handleEliminar()}>
+              <Button variant="primary" onClick={ ()=>handleEliminar()}>
                Confirmar
               </Button>
             </Modal.Footer>

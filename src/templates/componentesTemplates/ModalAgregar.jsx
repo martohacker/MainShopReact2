@@ -39,14 +39,14 @@ export default function ModalAgregar() {
         const headers= {
             'Content-Type' : 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Request-Headers': 'Content-Type'
+            'Access-Control-Allow-Origin':'*'
         }
         axios.post("https://mainshop-nodejs.herokuapp.com/AgregarProducto", params, {headers}).then((res) => {
           console.log(res.data);
       }).catch((error) => {
         console.log(error)
       });
+      handleClose();
     }
   
     return (
