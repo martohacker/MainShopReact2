@@ -43,10 +43,10 @@ export default function ModalEliminar(props){
           </Button>
     
           <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
+            <Modal.Header style={{backgroundColor:'#E4FFFF'}} closeButton>
               <Modal.Title>¿Está seguro?</Modal.Title>
             </Modal.Header>
-            <Modal.Footer>
+            <Modal.Footer style={{backgroundColor:'#E4FFFF'}}>
               <Button variant="secondary" onClick={handleClose}>
                 Cancelar
               </Button>
