@@ -52,6 +52,7 @@ const loginComponent = (props) => {
                                   <option value="Marca">Marca</option>
                               </Form.Select>
                               </InputGroup>
+                              <p className="inicia">Tenes una cuenta? <span onClick={() => setHasAccount(!hasAccount)}>Inicia sesion</span></p>    
                                 </Row>
                                 </div>
                                 

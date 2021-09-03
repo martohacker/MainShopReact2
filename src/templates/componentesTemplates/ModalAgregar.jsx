@@ -4,8 +4,7 @@ import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col
 import axios from "axios";
 import store from '../../store/index';
 
-export default function ModalAgregar(props) {
-    const {id} = props;
+export default function ModalAgregar() {
     const [show, setShow] = useState(false);
     const [nombre, setNombre] = useState("");
     const [precio, setPrecio] = useState("");
@@ -24,20 +23,26 @@ export default function ModalAgregar(props) {
 
     function handleSubmit(){            
         const idMarca = getIdMarca();
-        const params = new URLSearchParams();
-            params.append('id', idMarca);
-            params.append('nameProducto', nombre);
-            params.append('categoriaProducto', 'ropa');
-            params.append('precioProducto', precio);
-            params.append('tipoProducto', tipo);
-            params.append('idProducto', id);
-        console.log(id);
+        const params = JSON.stringify(
+          {id:idMarca, 
+          nameProducto: nombre,
+          categoriaProducto: 'ropa',
+          precioProducto: precio,
+          tipoProducto: tipo
+        })
+        const mode= {
+          mode : 'cors'
+        }
+        console.log(params);
         console.log(nombre);
         console.log(tipo);
-        const headers={
-            'Content-Type': 'application/x-www-form-urlencoded'
+        const headers= {
+            'Content-Type' : 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Request-Headers': 'Content-Type'
         }
-        axios.put("https://mainshop-nodejs.herokuapp.com/ModificarProducto", params, { headers }).then((res) => {
+        axios.post("https://mainshop-nodejs.herokuapp.com/AgregarProducto", params, {headers}).then((res) => {
           console.log(res.data);
       }).catch((error) => {
         console.log(error)
@@ -52,6 +57,7 @@ export default function ModalAgregar(props) {
   
        <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header style={{backgroundColor:'#E4FFFF'}} closeButton>
+
          <Offcanvas.Title>Agregar Producto</Offcanvas.Title>
          </Offcanvas.Header>
            <Offcanvas.Body style={{backgroundColor:'#E4FFFF'}}>
@@ -78,6 +84,12 @@ export default function ModalAgregar(props) {
                            </Col>
                       </Form.Group>
                </Form>
+               <Button className="Cancelar" variant="secondary" onClick={handleClose}>
+              Cancelar
+            </Button>
+            <Button style={{marginTop:'1%'}} variant="primary" onClick={()=>handleSubmit()}>
+              Confirmar
+            </Button>
             </Offcanvas.Body>
         </Offcanvas>
 </>

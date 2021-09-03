@@ -28,15 +28,15 @@ export default function ModalAgregar(props) {
             params.append('categoriaProducto', 'ropa');
             params.append('precioProducto', precio);
             params.append('tipoProducto', tipo);
-            params.append('idProducto', id);
         console.log(id);
         console.log(nombre);
         console.log(tipo);
         const headers={
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-        axios.put("https://mainshop-nodejs.herokuapp.com/ModificarProducto", params, { headers }).then((res) => {
+        axios.put("https://mainshop-nodejs.herokuapp.com/ModificarProducto?idProducto="+id, params, { headers }).then((res) => {
           console.log(res.data);
+          handleClose();
       }).catch((error) => {
         console.log(error)
       });
@@ -81,7 +81,7 @@ export default function ModalAgregar(props) {
             <Button className="Cancelar" variant="secondary" onClick={handleClose}>
               Cancelar
             </Button>
-            <Button variant="primary" onClick={()=>handleClose(), ()=>handleSubmit()}>
+            <Button variant="primary" onClick={()=>handleSubmit()}>
               Confirmar
             </Button>
           </Modal.Footer>
