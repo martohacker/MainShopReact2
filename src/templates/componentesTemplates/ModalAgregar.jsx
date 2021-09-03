@@ -46,35 +46,35 @@ export default function ModalAgregar(props) {
   
     return (
       <>
-        <Button className="botonAgregar"  style={{fontSize:'80%', backgroundColor: 'green', borderColor:'#343a40'}}  onClick={handleShow}>
+        <Button style={{fontSize:'80%', backgroundColor: '#0d6efd', borderColor:'#343a40', position:"relative", left:'6%', bottom:'10%'}}  onClick={handleShow}>
           Agregar Producto
         </Button>
   
        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header style={{backgroundColor:'#E4FFFF'}} closeButton>
          <Offcanvas.Title>Agregar Producto</Offcanvas.Title>
          </Offcanvas.Header>
-           <Offcanvas.Body>
+           <Offcanvas.Body style={{backgroundColor:'#E4FFFF'}}>
                 <Form>
                   
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                    <Form.Group  as={Row} className="mb-3" controlId="formPlaintextPassword">
                        <Form.Label column sm="2">
                            Nombre
                        </Form.Label>
                           <Col sm="10">
-                              <Form.Control onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" />
+                              <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" />
                           </Col>
                        <Form.Label column sm="2">
                              Tipo
                        </Form.Label>
                            <Col sm="10">
-                              <Form.Control onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" />
+                              <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" />
                            </Col>
                        <Form.Label column sm="2">
                              Precio
                         </Form.Label>
                             <Col sm="10">
-                              <Form.Control onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
+                              <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
                            </Col>
                       </Form.Group>
                </Form>
@@ -83,5 +83,8 @@ export default function ModalAgregar(props) {
 </>
     );
   }
+
+
+
 
 
