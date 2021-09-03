@@ -49,10 +49,10 @@ export default function ModalAgregar(props) {
         </Button>
   
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+          <Modal.Header style={{backgroundColor:'#E4FFFF'}} closeButton>
             <Modal.Title>Editar Producto</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{backgroundColor:'#E4FFFF'}} >
               <Form>
                   
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -60,25 +60,25 @@ export default function ModalAgregar(props) {
                      Nombre
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" />
                      </Col>
                      <Form.Label column sm="2">
                      Tipo
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" />
                      </Col>
                      <Form.Label column sm="2">
                      Precio
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
                      </Col>
             </Form.Group>
 </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+          <Modal.Footer style={{backgroundColor:'#E4FFFF'}}>
+            <Button className="Cancelar" variant="secondary" onClick={handleClose}>
               Cancelar
             </Button>
             <Button variant="primary" onClick={()=>handleClose(), ()=>handleSubmit()}>
