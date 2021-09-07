@@ -48,3 +48,8 @@
     letter-spacing: 0.5px;
     color:rgb(36, 172, 218)
 }
+
+.errorMsg{
+    color: red;
+    font-size: small;
+}

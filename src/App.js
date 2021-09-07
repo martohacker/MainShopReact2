@@ -36,7 +36,9 @@ export default function App() {
   const [logoEmpresa, setLogoEmpresa] = useState("");
   const [tipoUsuario, setTipo] = useState("");
 
-
+  const allInputs = {imgUrl: ''}
+  const [imageAsFile, setImageAsFile] = useState('')
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
 
   const clearInputs = () => {
@@ -50,13 +52,14 @@ export default function App() {
     setRespuestaEnPantalla("");
   }
 
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0]
+    setImageAsFile(imageFile => (image))
+}
+
   const subirLogo = () =>{
     var storage = db.storage();
-    const Newref = storage.ref('images').child(logo);
-    Newref.put(logo).then(function(snapshot) {
-      console.log(snapshot);
-    })
-    
+    const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
   }
 
   function handleSignUp(event) {
@@ -236,9 +239,7 @@ export default function App() {
             </Col>
             <Col md="4">
               <LoginComponent
-                email={email}
                 setEmail={setEmail}
-                password={password}
                 setPassword={setPassword}
                 handleLogin={handleLogin}
                 handleSignUp={handleSignUp}
@@ -248,6 +249,7 @@ export default function App() {
                 passwordError={passwordError}
                 tipoUsuario={tipoUsuario}
                 handleChange={handleChange}
+                handleImageAsFile={handleImageAsFile}
                 respuesta={respuestaEnPantalla} />
             </Col>
           </Row>
