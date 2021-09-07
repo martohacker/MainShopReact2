@@ -136,7 +136,8 @@
 
 .logoHome{
   width: 35%;
-  right: 1200%;
+  position: relative;
+  left: 2%;
 } 
   
 .navBarHeader{
