@@ -1,0 +1,43 @@
+.titulo {
+    position: relative;
+    left: 15%;
+    margin-top: 4%;
+    font-family: sans-serif;
+    font-style: italic;
+    color: #212529;
+}
+
+.imagen{
+    min-width: 250px;
+    max-width: 300px;
+    position: relative;
+    left: 5%;
+}
+
+.precio {
+    color: #212529d9;
+    position: relative;
+    left: 53%;
+    font-size: 120%;
+    bottom: 65%;
+}
+
+.Envios{
+    color: #89FF80;
+    position: relative;
+    left: 53%;
+    bottom: 65%;
+    font-size: 100%;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.Metodos{
+    color: #56DCFA;
+    position: relative;
+    left: 53%;
+    bottom: 65%;
+    font-size: 100%;
+    cursor: pointer;
+    font-weight: 600;
+}
