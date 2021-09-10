@@ -16,10 +16,10 @@ export default function (props){
             <hr/>
             <Col md="6">
             <img className="imagen" src={remera} />
-            <h3 className="precio">${producto.precioProducto}</h3>
+            <h3 className="precioCompleto">${producto.precioProducto}</h3>
             <span onClick="" className="Envios" >Envíos gratis a todo el país</span>
             <h4 className="Metodos" >Métodos de pago</h4>
-            <ComponentElegirTalle></ComponentElegirTalle>
+            <ComponentElegirTalle talles={producto.descripcion.talle}/>
             </Col>
         </Row>
     )

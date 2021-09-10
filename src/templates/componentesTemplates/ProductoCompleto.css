@@ -14,7 +14,7 @@
     left: 5%;
 }
 
-.precio {
+.precioCompleto {
     color: #212529d9;
     position: relative;
     left: 53%;
@@ -39,5 +39,14 @@
     bottom: 65%;
     font-size: 100%;
     cursor: pointer;
+    font-weight: 600;
+}
+
+.ElegirTalle{
+    color: #56DCFA;
+    position: relative;
+    left: 52%;
+    bottom: 70%;
+    font-size: 100%;
     font-weight: 600;
 }

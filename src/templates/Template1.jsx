@@ -14,6 +14,7 @@ const [productoAVer, setProductoAVer] = useState("");
 function verProducto(idProducto){
     productos.forEach(element => {
         if (element.idProducto == idProducto){
+            console.log(element);
             setProductoAVer(element);
         }
     });
