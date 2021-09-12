@@ -1,7 +1,7 @@
 .titulo {
     position: relative;
-    left: 15%;
-    margin-top: 4%;
+    left: 17%;
+    top: 20%;
     font-family: sans-serif;
     font-style: italic;
     color: #212529;
@@ -11,22 +11,23 @@
     min-width: 250px;
     max-width: 300px;
     position: relative;
-    left: 5%;
+    left: 14%;
+    top: 10%;
 }
 
 .precioCompleto {
     color: #212529d9;
     position: relative;
-    left: 53%;
+    left: 40%;
     font-size: 120%;
-    bottom: 65%;
+    bottom: 55%;
 }
 
 .Envios{
     color: #89FF80;
     position: relative;
-    left: 53%;
-    bottom: 65%;
+    left: 40%;
+    bottom: 55%;
     font-size: 100%;
     cursor: pointer;
     font-weight: 600;
@@ -35,18 +36,92 @@
 .Metodos{
     color: #56DCFA;
     position: relative;
-    left: 53%;
-    bottom: 65%;
+    left: 40%;
+    bottom: 55%;
     font-size: 100%;
     cursor: pointer;
     font-weight: 600;
 }
 
 .ElegirTalle{
-    color: #56DCFA;
     position: relative;
-    left: 52%;
-    bottom: 70%;
+    left: 39%;
+    bottom: 55%;
     font-size: 100%;
     font-weight: 600;
+}
+
+.ElegirColor{
+    position: relative;
+    left: 39%;
+    bottom: 63%;
+    font-size: 100%;
+    font-weight: 600;
+}
+
+.Agregar{
+    position: relative;
+    left: 39.5%;
+    bottom: 60%;
+    font-size: 100%;
+    font-weight: 600;
+    width: 23%;
+    margin-bottom: 10%;
+}
+
+.Comprar{
+    position: relative;
+    left: 16.5%;
+    font-size: 100%;
+    font-weight: 600;
+    width: 23%
+}
+.eleccion{
+    position: relative;
+    bottom: 45%;
+    top: -29%;
+    left: 10%;
+}
+
+.Info{
+    font-family: sans-serif;
+    font-style: italic;
+    color: #212529;
+    position: relative;
+    top: -11%;
+}
+
+.hr{
+    height: 1.8px;
+}
+
+.texto{
+    position: relative;
+    top: 0%;
+    font-family: Josefin Sans;
+}
+
+.division{
+    position: relative;
+    bottom: 25%;
+}
+.recomendacion{
+    position: relative;
+    left: 23%;
+    top: -24%;
+    font-family: sans-serif;
+    font-style: italic;
+    color: #212529;
+}
+
+.react-multiple-carousel__arrow{
+    background: #e4ffff;
+    position: relative;
+    top: 90%;
+}
+
+.Carousel{
+    padding: 3%;
+    position: relative;
+    top: -25%;
 }

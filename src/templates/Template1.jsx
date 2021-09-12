@@ -21,7 +21,7 @@ function verProducto(idProducto){
 }
     return (
         productoAVer ? (
-            <ComponentProductoCompleto producto = {productoAVer} />
+            <ComponentProductoCompleto productos={productos} producto = {productoAVer} />
         ) : (
         <>
          <img src={Logo} className="logo"></img>

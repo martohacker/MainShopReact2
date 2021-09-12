@@ -66,11 +66,9 @@ export default function ControlledOpenSelect(props) {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+
           {tallesDisp.map((talle)=>(
-            <MenuItem key={""} value={talle}>{talle}</MenuItem>
+            <option value={talle}>{talle}</option>
           ))}
         </Select>
       </FormControl>
