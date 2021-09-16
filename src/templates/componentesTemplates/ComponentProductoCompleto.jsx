@@ -13,7 +13,7 @@ import CarouselProds from "./CarouselProds";
 
 
 export default function (props){
-    const {producto, productos} = props;
+    const {setProductoAVer, producto, productos} = props;
     return (
         <Row>
             <h1 style={{marginTop:'3%'}} className="titulo">{producto.nameProducto}</h1>
@@ -31,7 +31,7 @@ export default function (props){
                  </div>
                  <h1 className="recomendacion">Productos recomendados</h1>
                  <hr className="division"/>
-                 <CarouselProds producto={producto} productos={productos}/>
+                 <CarouselProds className="Carousel" setProductoAVer={setProductoAVer} producto={producto} productos={productos}/>
             </Col>
             <Col md="6">
                 <h1 className="Info">Información sobre el producto</h1>

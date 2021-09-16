@@ -10,19 +10,25 @@ import ComponentElegirTalle from "./ComponentElegirTalle";
 import ElegirColor from "./ElegirColor";
 
 export default function ProductoRecomendado(props){
-    const {producto} = props;
+    const {producto, setProductoAVer} = props;
 
     return (
-    <Card className="prodRecomendados" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-            <Card.Title>{producto.nameProducto}</Card.Title>
-            <Card.Text>
-           ${producto.precioProducto}
-            </Card.Text>
-            <Button variant="primary">Ver producto</Button>
-        </Card.Body>
+    <Card className="prodRecomendados" style={{ width: '90%'}}>
+
+            <img className="remeraRecomendada" src={remera} />
+            <Card.Title style={{marginTop:'-35%'}} className="tituloRecomendado">{producto.nameProducto}</Card.Title>
+            <Card.Text className="precioRecomendado">${producto.precioProducto}</Card.Text>
+            <Button onClick={()=>setProductoAVer(producto)} style={{marginTop:'13%'}} variant="primary">Ver producto</Button>
     </Card>
     )
 
 }
+
+
+/*<Card.Body>
+<h3 className="tituloRecomendado">{producto.nameProducto}</h3>
+<Card.Text>
+${producto.precioProducto}
+</Card.Text>
+<Button variant="primary">Ver producto</Button>
+        </Card.Body>*/

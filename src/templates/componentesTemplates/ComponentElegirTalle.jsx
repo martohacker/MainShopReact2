@@ -29,14 +29,9 @@ export default function ControlledOpenSelect(props) {
     setAge(event.target.value);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-
+  const validarTalles = () => {
     if(talles.XS>0){
-      tallesDisp.push("xS")
+      tallesDisp.push("XS")
     }
     if(talles.S>0){
       tallesDisp.push("S")
@@ -50,16 +45,26 @@ export default function ControlledOpenSelect(props) {
     if(talles.XL>0){
       tallesDisp.push("XL")
     }
+
+    console.log(tallesDisp);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
     setOpen(true);
   };
 
   return (
-    <div  className="ElegirTalle">
+    <div className="ElegirTalle">
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Talle</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
+          onClick={validarTalles()} 
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
