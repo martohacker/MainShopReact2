@@ -23,16 +23,14 @@ export default function ModalAgregar() {
 
     function handleSubmit(){            
         const idMarca = getIdMarca();
-        const params = JSON.stringify(
-          {id:idMarca, 
-          nameProducto: nombre,
-          categoriaProducto: 'ropa',
-          precioProducto: precio,
-          tipoProducto: tipo
-        })
-        const mode= {
-          mode : 'cors'
-        }
+        const params = new URLSearchParams();
+        params.append('id', idMarca);
+        params.append('nameProducto', nombre);
+        params.append('categoriaProducto', 'ropa');
+        params.append('precioProducto', precio);
+        params.append('tipoDeProducto', tipo);
+        params.append('idProducto', 'KSDFKkdsakffks34');
+        
         console.log(params);
         console.log(nombre);
         console.log(tipo);
@@ -41,7 +39,7 @@ export default function ModalAgregar() {
             'X-Requested-With': 'XMLHttpRequest',
             'Access-Control-Allow-Origin':'*'
         }
-        axios.post("https://mainshop-nodejs.herokuapp.com/AgregarProducto", params, {headers}).then((res) => {
+        axios.post("http://localhost:8000/AgregarProducto", params).then((res) => {
           console.log(res.data);
       }).catch((error) => {
         console.log(error)

@@ -11,6 +11,8 @@ import logo from './images/Logo.png';
 import store from './store/index';
 import "./App.css"
 import {getState} from "react-redux";
+import { render } from "@testing-library/react";
+import HomeUser from "./components/HomeUser";
 
 
 
@@ -19,6 +21,7 @@ export default function App() {
 
  
   const [token, setToken] = useState("");
+  const [id, setId] = useState("");
   const [hasAccount, setHasAccount] = useState(true);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +38,7 @@ export default function App() {
   const [respuestaEnPantalla, setRespuestaEnPantalla] = useState("");
   const [logoEmpresa, setLogoEmpresa] = useState("");
   const [tipoUsuario, setTipo] = useState("");
+  const [marcas, setMarcas] = useState("");
 
   const allInputs = {imgUrl: ''}
   const [imageAsFile, setImageAsFile] = useState('')
@@ -65,6 +69,9 @@ export default function App() {
   function handleSignUp(event) {
     clearErrors();
     event.preventDefault();
+    if(tipoUsuario=="Usuario"){
+      traerMarcas();
+    }
     subirLogo();
 
     db.auth().createUserWithEmailAndPassword(email, password).then((credential) => {
@@ -85,23 +92,34 @@ export default function App() {
   }
 
 
-  function createUser(idMarca){
+  function createUser(id){
+
     const params = new URLSearchParams();
-    params.append('id', idMarca);
-    params.append('name', name);
-    params.append('password', password);
-    params.append('email', email);
-    params.append('categoria', categoria);
-    params.append('cuit', cuit);
-    params.append('razonSocial', razonSocial);
-    params.append('condicionFrenteAlIva', condicionFrenteAlIva);
-    params.append('numeroIngresosBrutos', numeroIngresosBrutos);
-    params.append('suscripcion', suscripcion);
-    params.append('idPlantilla', idPlantilla);
+    if(tipoUsuario=="Marca"){
+        params.append('id', id);
+        params.append('name', name);
+        params.append('password', password);
+        params.append('email', email);
+        params.append('categoria', categoria);
+        params.append('cuit', cuit);
+        params.append('razonSocial', razonSocial);
+        params.append('condicionFrenteAlIva', condicionFrenteAlIva);
+        params.append('numeroIngresosBrutos', numeroIngresosBrutos);
+        params.append('suscripcion', suscripcion);
+        params.append('idPlantilla', idPlantilla);
+        params.append('tipoDeCuenta', tipoUsuario);
+
+    } else{
+        params.append('id', id);
+        params.append('name', name);
+        params.append('password', password);
+        params.append('email', email);
+        params.append('tipoDeCuenta', tipoUsuario);
+    }
+    
 
 
-
-    axios.post("https://mainshop-nodejs.herokuapp.com/MarcaRegistro", params).then((res) => {
+    axios.post("http://localhost:8000/UsuarioRegistro", params).then((res) => {
       console.log(res.data);
       const respuesta = res.data;
       if(respuesta) {
@@ -122,6 +140,9 @@ export default function App() {
     db
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then((credential) => {
+        setId(credential.user.uid);
+      })
       .catch(error => {
         switch (error.code) {
           case "auth/invalid-email":
@@ -145,12 +166,35 @@ export default function App() {
     //dispatch store
   }
 
+  function traerMarcas() {
+    axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
+    console.log(res);
+    setMarcas(res);
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
+
+  function traerTipo(id){
+    console.log("hola");
+      axios.get("http://localhost:8000/TraerTipo?id="+id).then((res) => {
+        setTipo(res);
+        console.log(tipoUsuario);
+        }).catch((error) => {
+          console.log(error)
+        });
+  }
+
   const authListener = () => {
     console.log("listener");
     db
       .auth()
       .onAuthStateChanged(user => {
-        console.log(user);
+        traerTipo(id);
+            if(tipoUsuario=="Usuario"){
+              traerMarcas();
+            }
+            console.log(user);
         if (user) {
           clearInputs();
           console.log(user);
@@ -219,14 +263,21 @@ export default function App() {
   }
 
 
-  return (
-      <Container className="mainBackground" fluid="l">
-
-
-      
-      {token != "" ? (
-        <Home handleLogout={handleLogout}/>
-      ) : (
+  render();
+    if(token != ""){
+      return(
+        <Container className="mainBackground" fluid="l">
+        {tipoUsuario=="Marca"? (
+          <Home handleLogout={handleLogout}/>
+        ):(
+          <HomeUser marcas={marcas}/>
+          )}
+          </Container>
+        );
+      }
+      else{
+        return(
+          <Container className="mainBackground" fluid="l">
         <div className="App-header">
           <div>
             <img className="logoApp" src={logo}></img>
@@ -254,13 +305,7 @@ export default function App() {
             </Col>
           </Row>
         </div>
-      )
-    }
- 
-      </Container>
-
-    
-  );
-
-
+        </Container>
+        );
+      }
   }

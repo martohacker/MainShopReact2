@@ -19,7 +19,7 @@ export default function CardProducto(props){
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
                 </Card.Body>
-                <ModalEditar id={producto.idProducto}/>
+                <ModalEditar producto={producto}/>
                 <ModalEliminar idProducto={producto.idProducto} />
              </Card>
         </Col>

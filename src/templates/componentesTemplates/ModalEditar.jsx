@@ -4,7 +4,7 @@ import axios from "axios";
 import store from '../../store/index';
 
 export default function ModalAgregar(props) {
-    const {id} = props;
+    const {producto} = props;
     const [show, setShow] = useState(false);
     const [nombre, setNombre] = useState("");
     const [precio, setPrecio] = useState("");
@@ -27,14 +27,13 @@ export default function ModalAgregar(props) {
             params.append('nameProducto', nombre);
             params.append('categoriaProducto', 'ropa');
             params.append('precioProducto', precio);
-            params.append('tipoProducto', tipo);
-        console.log(id);
+            params.append('tipoDeProducto', tipo);
         console.log(nombre);
         console.log(tipo);
         const headers={
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-        axios.put("https://mainshop-nodejs.herokuapp.com/ModificarProducto?idProducto="+id, params, { headers }).then((res) => {
+        axios.put("http://localhost:8000/ModificarProducto?idProducto="+producto.idProducto, params, { headers }).then((res) => {
           console.log(res.data);
           handleClose();
       }).catch((error) => {
@@ -60,19 +59,19 @@ export default function ModalAgregar(props) {
                      Nombre
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" value={producto.nameProducto} />
                      </Col>
                      <Form.Label column sm="2">
                      Tipo
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" value={producto.tipoDeProducto} />
                      </Col>
                      <Form.Label column sm="2">
                      Precio
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" value={producto.precioProducto} />
                      </Col>
             </Form.Group>
 </Form>

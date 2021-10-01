@@ -9,7 +9,7 @@ export default function SeleccionarUsuario(props){
                                   <Row>
                                   <InputGroup className="mb-3">
                               <Form.Select name="tipoUsuario" required onChange={handleChange} aria-label="Default select example">
-                                  <option value="">Seleccione el tipo de usuario</option>
+                                  <option value="">Seleccione el tipo de cuenta</option>
                                   <option value="Usuario">Usuario</option>
                                   <option value="Marca">Marca</option>
                               </Form.Select>

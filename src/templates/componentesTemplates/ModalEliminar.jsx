@@ -29,7 +29,7 @@ export default function ModalEliminar(props){
         const params= new URLSearchParams();
         params.append('id', idMarca);
         params.append('idProducto', idProducto);
-        axios.delete("https://mainshop-nodejs.herokuapp.com/BorrarProducto", params, { headers }).then((res) => {
+        axios.post("http://localhost:8000/BorrarProducto", params).then((res) => {
             console.log(res.data);
         }).catch((error) => {
           console.log(error)
