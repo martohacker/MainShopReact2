@@ -37,7 +37,7 @@ export default function App() {
   const [idPlantilla, setIdPlantilla] = useState("sadasdfgege3432");
   const [respuestaEnPantalla, setRespuestaEnPantalla] = useState("");
   const [logoEmpresa, setLogoEmpresa] = useState("");
-  const [tipoUsuario, setTipo] = useState("");
+  const [tipoUsuario, setTipoUsuario] = useState("");
   const [marcas, setMarcas] = useState("");
 
   const allInputs = {imgUrl: ''}
@@ -175,14 +175,18 @@ export default function App() {
     });
   }
 
-  function traerTipo(id){
-    console.log("hola");
-      axios.get("http://localhost:8000/TraerTipo?id="+id).then((res) => {
-        setTipo(res);
-        console.log(tipoUsuario);
-        }).catch((error) => {
-          console.log(error)
-        });
+  async function traerTipo(id){
+    try{
+      const res =  await axios.get("http://localhost:8000/TraerTipo?id="+id);
+      console.log(res.data);
+      if(res.data=="Usuario"){
+        console.log("hola");
+        setTipoUsuario("Usuario");
+      }
+      console.log(tipoUsuario);
+    }catch(error){
+      console.log(error);
+    };   
   }
 
   const authListener = () => {
@@ -190,7 +194,7 @@ export default function App() {
     db
       .auth()
       .onAuthStateChanged(user => {
-        traerTipo(id);
+      traerTipo(id);
             if(tipoUsuario=="Usuario"){
               traerMarcas();
             }
@@ -250,7 +254,7 @@ export default function App() {
           setLogoEmpresa(event.target.value);
           break;
        case "tipoUsuario":
-            setTipo(event.target.value);
+            setTipoUsuario(event.target.value);
             break;
     }
   };
