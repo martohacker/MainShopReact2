@@ -8,10 +8,31 @@ import "./Home.css";
 import Header from "./Header";
 import Template1 from "../templates/Template1"
 import store from '../store/index';
+import { render } from "@testing-library/react";
 
-export default function HomeUser(props){
-    const {marcas} = props;
-    {marcas.map((marca)=>(
-        <p>{marca.name}</p>
-    )) }
+export default function HomeUser(){
+    const [marcas, setMarcas] = useState([]);
+    useEffect(() => {
+        async function GiveMeBrands() {
+            await axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
+                console.log(res.data);
+                setMarcas(res.data);
+            }).catch((error) => {
+                console.log(error)
+            });
+        };
+        GiveMeBrands()
+    }, [])
+    
+
+    render();
+    if(marcas) {
+        return(
+            <Container className="mainBackground" fluid="l">
+                { marcas.map((marca)=>(
+                    <p>{marca.name}</p>
+                )) }
+            </Container>
+        )
+    }
 }

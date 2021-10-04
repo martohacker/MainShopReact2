@@ -64,14 +64,12 @@ export default function App() {
   const subirLogo = () =>{
     var storage = db.storage();
     const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
+    setLogoEmpresa(imageAsFile.name);
   }
 
   function handleSignUp(event) {
     clearErrors();
     event.preventDefault();
-    if(tipoUsuario=="Usuario"){
-      traerMarcas();
-    }
     subirLogo();
 
     db.auth().createUserWithEmailAndPassword(email, password).then((credential) => {
@@ -108,6 +106,8 @@ export default function App() {
         params.append('suscripcion', suscripcion);
         params.append('idPlantilla', idPlantilla);
         params.append('tipoDeCuenta', tipoUsuario);
+        params.append('logo', logoEmpresa);
+        params.append('tipoDeCuenta', tipoUsuario);
 
     } else{
         params.append('id', id);
@@ -141,7 +141,6 @@ export default function App() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((credential) => {
-        setId(credential.user.uid);
       })
       .catch(error => {
         switch (error.code) {
@@ -166,24 +165,12 @@ export default function App() {
     //dispatch store
   }
 
-  function traerMarcas() {
-    axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
-    console.log(res);
-    setMarcas(res);
-    }).catch((error) => {
-      console.log(error)
-    });
-  }
-
   async function traerTipo(id){
     try{
       const res =  await axios.get("http://localhost:8000/TraerTipo?id="+id);
-      console.log(res.data);
-      if(res.data=="Usuario"){
-        console.log("hola");
-        setTipoUsuario("Usuario");
-      }
-      console.log(tipoUsuario);
+      console.log("hola" + res.data);
+
+      setTipoUsuario(res.data);
     }catch(error){
       console.log(error);
     };   
@@ -191,15 +178,12 @@ export default function App() {
 
   const authListener = () => {
     console.log("listener");
-    db
-      .auth()
-      .onAuthStateChanged(user => {
-      traerTipo(id);
-            if(tipoUsuario=="Usuario"){
-              traerMarcas();
-            }
-            console.log(user);
+    db.auth().onAuthStateChanged(user => {
+        console.log(user);
         if (user) {
+          console.log("id:"+ user.uid);
+          traerTipo(user.uid);
+            
           clearInputs();
           console.log(user);
           const userInfo = {
@@ -271,10 +255,10 @@ export default function App() {
     if(token != ""){
       return(
         <Container className="mainBackground" fluid="l">
-        {tipoUsuario=="Marca"? (
-          <Home handleLogout={handleLogout}/>
+        {tipoUsuario == "Usuario" ? (
+          <HomeUser/>
         ):(
-          <HomeUser marcas={marcas}/>
+          <Home handleLogout={handleLogout}/>
           )}
           </Container>
         );
