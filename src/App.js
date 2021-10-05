@@ -251,22 +251,15 @@ export default function App() {
   }
 
 
-  render();
-    if(token != ""){
+  
       return(
         <Container className="mainBackground" fluid="l">
         {tipoUsuario == "Usuario" ? (
-          <HomeUser/>
-        ):(
+          <HomeUser handleLogout={handleLogout}/>
+        ):(tipoUsuario == "Marca" ? (
           <Home handleLogout={handleLogout}/>
-          )}
-          </Container>
-        );
-      }
-      else{
-        return(
-          <Container className="mainBackground" fluid="l">
-        <div className="App-header">
+        ):(
+          <div className="App-header">
           <div>
             <img className="logoApp" src={logo}></img>
           </div>
@@ -293,7 +286,9 @@ export default function App() {
             </Col>
           </Row>
         </div>
-        </Container>
+        ))
+        }
+          </Container>
         );
       }
-  }
+      

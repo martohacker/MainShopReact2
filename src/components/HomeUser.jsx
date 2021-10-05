@@ -10,13 +10,19 @@ import Template1 from "../templates/Template1"
 import store from '../store/index';
 import { render } from "@testing-library/react";
 
-export default function HomeUser(){
+export default function HomeUser(props){
+    const {handleLogout}=props;
     const [marcas, setMarcas] = useState([]);
+    const [marcaAVer, setMarcaAVer] = useState([]);
+
     useEffect(() => {
         async function GiveMeBrands() {
             await axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
                 console.log(res.data);
                 setMarcas(res.data);
+                marcas.map((marca) => {
+                    cargarLogos(marca);
+                })
             }).catch((error) => {
                 console.log(error)
             });
@@ -24,15 +30,28 @@ export default function HomeUser(){
         GiveMeBrands()
     }, [])
     
+    function cargarLogos(marca){
+        var storage = db.storage();
+            storage.child('images/'+marca.logo).getDownloadURL().then(function(url){
+                var img = document.getElementById(marca.name);
+                img.src = url;
+                img.onclick=setMarcaAVer(marca.id);
+
+              }).catch(function(error) {
+                // Handle any errors
+              });
+    }
+
 
     render();
     if(marcas) {
         return(
-            <Container className="mainBackground" fluid="l">
+                <>
+                <Header handleLogout={handleLogout}/>
                 { marcas.map((marca)=>(
-                    <p>{marca.name}</p>
+                    <img id={marca.name} src={'images/'+marca.logo}/>
                 )) }
-            </Container>
+                </>
         )
     }
 }
