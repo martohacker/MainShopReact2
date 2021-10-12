@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import ProductoRecomendado from "./ProductoRecomendado";
 
 export default function CarouselProds(props){
-  const {setProductoAVer, productos, producto} = props;
+  const {verProducto, productos, producto} = props;
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -22,10 +22,12 @@ export default function CarouselProds(props){
         }
       };
 
+  
+
       return (
         <Carousel className="Carousel" responsive={responsive}>
                     {productos.filter(prod=> (prod.tipoDeProducto==producto.tipoDeProducto)&&(prod.idProducto!=producto.idProducto)).map(prodFiltrado=> ( 
-                    <ProductoRecomendado setProductoAVer={setProductoAVer} producto={prodFiltrado}/>
+                    <ProductoRecomendado verProducto={verProducto} producto={prodFiltrado}/>
                 ))}
             </Carousel>
       )

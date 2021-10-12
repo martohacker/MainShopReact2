@@ -189,7 +189,8 @@ export default function App() {
           const userInfo = {
             token : user.refreshToken,
             email : user.email,
-            id : user.uid
+            id : user.uid,
+            tipo: tipoUsuario
           }
           store.dispatch(({type : 'login', userInfo}));
           getToken();
@@ -254,9 +255,9 @@ export default function App() {
   
       return(
         <Container className="mainBackground" fluid="l">
-        {tipoUsuario == "Usuario" ? (
-          <HomeUser handleLogout={handleLogout}/>
-        ):(tipoUsuario == "Marca" ? (
+        {tipoUsuario == "Usuario" && token ? (
+          <HomeUser tipo={tipoUsuario} handleLogout={handleLogout}/>
+        ):(tipoUsuario == "Marca" && token ?  (
           <Home handleLogout={handleLogout}/>
         ):(
           <div className="App-header">

@@ -6,58 +6,101 @@ import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col
 import logo from '../images/Logo.png'
 import "./Home.css";
 import Header from "./Header";
-import Template1 from "../templates/Template1"
+import Template1User from "./Template1User";
 import store from '../store/index';
 import { render } from "@testing-library/react";
+import "./HomeUser.css"
+import CardProducto from "../templates/componentesTemplates/CardProducto";
 
 export default function HomeUser(props){
-    const {handleLogout}=props;
+    const {handleLogout, tipo}=props;
     const [marcas, setMarcas] = useState([]);
     const [marcaAVer, setMarcaAVer] = useState("");
+    const [url, setUrl] = useState("");
+    const [productos, setProductos] = useState([]);
+    const [boton, setBoton] = useState(false);
 
     useEffect(() => {
+        let cont;
         async function GiveMeBrands() {
             await axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
                 console.log(res.data);
+                console.log("entre al use effect")
                 setMarcas(res.data);
-                marcas.forEach((marca) => {
-                    cargarLogos(marca);
-                })
+                cont++;
             }).catch((error) => {
                 console.log(error)
             });
-        };
-        GiveMeBrands()
-    }, [])
+        };        
+        
+        GiveMeBrands();
+    }, [boton])
+
+    useEffect(() => {
+       cargarLogos(marcaAVer);
+       getProductos(marcaAVer.id);
+      }, [marcaAVer]);
+
+
+      useEffect(() => {
+        marcas.forEach((marca) => {
+            if(marca.logo) {
+                cargarLogos(marca);
+                console.log("imagen");
+            } else {
+                console.log("no imagen");
+            }
+        })  
+       }, [marcas]);
+     
     
     function cargarLogos(marca){
         var storage = db.storage();
-            storage.ref('images/'+marca.logo).getDownloadURL().then(function(url){
+            storage.ref('images/'+marca.logo+".png").getDownloadURL().then(function(url){
                 console.log("hola"+url);
                 var img = document.getElementById(marca.name);
                 img.src = url;
+                setUrl(url);
               }).catch(function(error) {
                 console.log(error);
               });
     }
+
+    function getProductos(id){
+        console.log(id);
+          axios.get("https://mainshop-nodejs.herokuapp.com/ListadoProducto?id="+id).then((res) => {
+              setProductos(res.data);
+              console.log("productos: "+res.data);
+          }).catch((error) => {
+            console.log(error)
+          });
+      }
+
+      function handleTemplate(marca){
+          setMarcaAVer(marca);
+          setBoton(true);
+      }
+    
 
 
     render();
     if(marcas) {
         return(
                 <>
-                <Header handleLogout={handleLogout}/>
-                {marcaAVer?(
-                    <h1>hol {marcaAVer.name}</h1>
+                <Header setBoton={setBoton} boton={boton} handleLogout={handleLogout}/>
+                {marcaAVer && boton ?(
+                    <Template1User url={url} productos={productos} tipo={marcaAVer.tipoCuenta} />
                 ):(
                     <>
+                    <Row>
                     { marcas.map((marca)=>(
-                        <>
-                        <Col xs={6} md={4}>
-                        <button onClick={()=>setMarcaAVer(marca)}><Image id={marca.name} roundedCircle /></button>
-                      </Col>
-                    </>
+                        <Col md={2}>
+                            <div onClick={()=>handleTemplate(marca)}>
+                             <Image className="logoHomeUser" id={marca.name} roundedCircle />
+                             </div>
+                        </Col>
                     )) }
+                    </Row>
                     </>
                 )}
                     

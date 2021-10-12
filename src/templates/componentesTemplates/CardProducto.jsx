@@ -7,20 +7,39 @@ import ModalEditar from "./ModalEditar";
 import ModalEliminar from "./ModalEliminar";
 import ComponentProductoCompleto from "./ComponentProductoCompleto";
 import React, { useEffect, useState } from "react";
+import db from "../../firebase";
 
 export default function CardProducto(props){
-    const {producto, verProducto} = props;
+    const {producto, verProducto, tipo} = props;
+    const [url, setUrl] = useState(remera);
+
+    async function getImages(){
+        var storage = db.storage();
+            storage.ref('images/'+producto.imagen+".png").getDownloadURL().then(function(url){
+                console.log("hola"+url);
+                setUrl(url);
+              }).catch(function(error) {
+                console.log(error);
+              });
+    }
+    
+    getImages()
+
     return (
        
          <Col md="1">
              <Card className="cardProducto" style={{ width: '90%' }}>
-             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto)} ><img variant="top" src={remera} style= {{width: '100%'}} /></button>
+             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{width: '100%'}} /></button>
                          <Card.Body>
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
                 </Card.Body>
+             {tipo  == "Marca" ?(
+                <>
                 <ModalEditar producto={producto}/>
                 <ModalEliminar idProducto={producto.idProducto} />
+                </>
+             ):(<h1></h1>)}
              </Card>
         </Col>
        )

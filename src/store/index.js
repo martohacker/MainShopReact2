@@ -11,7 +11,8 @@ const authReducer = (state = initialAuthState, action) => {
         return {
             token : action.userInfo.token,
             email : action.userInfo.email,
-            id : action.userInfo.id
+            id : action.userInfo.id,
+            tipo : action.userInfo.tipo
         };
     }
 
@@ -19,7 +20,8 @@ const authReducer = (state = initialAuthState, action) => {
         return {
             token : "",
             email : "",
-            id: ""
+            id: "",
+            tipo: ""
         };
     }
 

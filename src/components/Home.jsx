@@ -17,6 +17,7 @@ export default function Home(props){
 
   const [productos, setProductos] = useState([]);
   const [boton, setBoton] = useState(false);
+  const [tipo, setTipo] = useState("");
   const handleLogout = props.handleLogout;
 
   function handleTemplate() {
@@ -28,6 +29,7 @@ export default function Home(props){
   function getProductos(){
     const state = store.getState();
     const id = state.id;
+    setTipo(state.tipo);
     console.log(id);
       axios.get("https://mainshop-nodejs.herokuapp.com/ListadoProducto?id="+id).then((res) => {
           setProductos(res.data);
@@ -43,7 +45,7 @@ export default function Home(props){
         <Header boton={boton} setBoton={setBoton} handleLogout={handleLogout}/>
         {boton ? (
           //tiene plantilla=> switch plantillas con esto adentro
-          <Template1 productos={productos}/>
+          <Template1 tipo={tipo} productos={productos}/>
           //no tiene plantilla=> vista de elegir plantilla
           
         ) : (
