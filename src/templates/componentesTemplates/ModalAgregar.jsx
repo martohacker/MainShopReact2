@@ -3,6 +3,8 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col, Modal} from 'react-bootstrap';
 import axios from "axios";
 import store from '../../store/index';
+import db from "../../firebase";
+import "../templates.css"
 
 export default function ModalAgregar() {
     const [show, setShow] = useState(false);
@@ -10,9 +12,24 @@ export default function ModalAgregar() {
     const [precio, setPrecio] = useState("");
     const [tipo, setTipo] = useState(""); 
     const [categoria, setCategoria] = useState(""); 
+    const allInputs = {imgUrl: ''}
+    const [imageAsFile, setImageAsFile] = useState('')
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+    const [imagen, setImagen] = useState("");
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleImageAsFile = (e) => {
+      const image = e.target.files[0]
+      setImageAsFile(imageFile => (image))
+  }
+
+  const subirImagen = () =>{
+    var storage = db.storage();
+    const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile);
+    console.log(imageAsFile.name);
+    setImagen(imageAsFile.name);
+  }
 
     function getIdMarca() {
         const state = store.getState();
@@ -23,6 +40,7 @@ export default function ModalAgregar() {
 
     function handleSubmit(){            
         const idMarca = getIdMarca();
+        subirImagen();
         const params = new URLSearchParams();
         params.append('id', idMarca);
         params.append('nameProducto', nombre);
@@ -30,7 +48,10 @@ export default function ModalAgregar() {
         params.append('precioProducto', precio);
         params.append('tipoDeProducto', tipo);
         params.append('idProducto', 'KSDFKkdsakffks34');
-        
+        params.append('imagen', imagen);
+
+
+        console.log(imagen);
         console.log(params);
         console.log(nombre);
         console.log(tipo);
@@ -60,7 +81,14 @@ export default function ModalAgregar() {
          </Offcanvas.Header>
            <Offcanvas.Body style={{backgroundColor:'#E4FFFF'}}>
                 <Form>
-                  
+                                    <FormControl
+                                        className="File"
+                                        type = "file"
+                                        name="imagen"
+                                        required
+                                        onChange={handleImageAsFile}
+                                        accept="image/png"
+                                    />
                     <Form.Group  as={Row} className="mb-3" controlId="formPlaintextPassword">
                        <Form.Label column sm="2">
                            Nombre

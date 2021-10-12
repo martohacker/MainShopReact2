@@ -15,7 +15,7 @@ export default function CardProducto(props){
 
     async function getImages(){
         var storage = db.storage();
-            storage.ref('images/'+producto.imagen+".png").getDownloadURL().then(function(url){
+            storage.ref('images/'+producto.imagen).getDownloadURL().then(function(url){
                 console.log("hola"+url);
                 setUrl(url);
               }).catch(function(error) {
@@ -29,7 +29,7 @@ export default function CardProducto(props){
        
          <Col md="1">
              <Card className="cardProducto" style={{ width: '90%' }}>
-             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{width: '100%'}} /></button>
+             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{maxHeight:'120px', minHeight:'120px', maxWidth:'119px', minWidth:'119px'}} /></button>
                          <Card.Body>
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
