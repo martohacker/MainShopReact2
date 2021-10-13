@@ -96,7 +96,7 @@ export default function HomeUser(props){
                     { marcas.map((marca)=>(
                         <Col md={2}>
                             <div onClick={()=>handleTemplate(marca)}>
-                             <Image className="logoHomeUser" id={marca.name} roundedCircle />
+                             <Image className="logoHomeUser" id={marca.name} />
                              </div>
                         </Col>
                     )) }

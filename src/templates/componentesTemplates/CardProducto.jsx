@@ -8,6 +8,8 @@ import ModalEliminar from "./ModalEliminar";
 import ComponentProductoCompleto from "./ComponentProductoCompleto";
 import React, { useEffect, useState } from "react";
 import db from "../../firebase";
+import AgregarCarrito from "./AgregarCarrito";
+import ComprarAhora from "./ComprarAhora";
 
 export default function CardProducto(props){
     const {producto, verProducto, tipo} = props;
@@ -29,7 +31,7 @@ export default function CardProducto(props){
        
          <Col md="1">
              <Card className="cardProducto" style={{ width: '90%' }}>
-             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{maxHeight:'120px', minHeight:'120px', maxWidth:'119px', minWidth:'119px'}} /></button>
+             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{maxHeight:'120px', minHeight:'120px', maxWidth:'116px', minWidth:'116px'}} /></button>
                          <Card.Body>
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>
@@ -39,7 +41,12 @@ export default function CardProducto(props){
                 <ModalEditar producto={producto}/>
                 <ModalEliminar idProducto={producto.idProducto} />
                 </>
-             ):(<h1></h1>)}
+             ):(
+               <>
+               <AgregarCarrito/>
+               <ComprarAhora/>
+               </>
+             )}
              </Card>
         </Col>
        )

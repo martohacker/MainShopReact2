@@ -258,7 +258,7 @@ export default function App() {
         {tipoUsuario == "Usuario" && token ? (
           <HomeUser tipo={tipoUsuario} handleLogout={handleLogout}/>
         ):(tipoUsuario == "Marca" && token ?  (
-          <Home handleLogout={handleLogout}/>
+          <Home tipo={tipoUsuario} handleLogout={handleLogout}/>
         ):(
           <div className="App-header">
           <div>

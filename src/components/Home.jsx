@@ -17,8 +17,7 @@ export default function Home(props){
 
   const [productos, setProductos] = useState([]);
   const [boton, setBoton] = useState(false);
-  const [tipo, setTipo] = useState("");
-  const handleLogout = props.handleLogout;
+  const {handleLogout, tipo} = props;
 
   function handleTemplate() {
     getProductos();
@@ -29,7 +28,6 @@ export default function Home(props){
   function getProductos(){
     const state = store.getState();
     const id = state.id;
-    setTipo(state.tipo);
     console.log(id);
       axios.get("https://mainshop-nodejs.herokuapp.com/ListadoProducto?id="+id).then((res) => {
           setProductos(res.data);

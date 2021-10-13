@@ -16,8 +16,8 @@ export default function ProductoRecomendado(props){
 
     async function getImages(){
         var storage = db.storage();
-            storage.ref('images/'+producto.imagen+".png").getDownloadURL().then(function(url){
-                console.log("hola"+url);
+            storage.ref('images/'+producto.imagen).getDownloadURL().then(function(url){
+                console.log("hola "+url);
                 setUrl(url);
               }).catch(function(error) {
                 console.log(error);
