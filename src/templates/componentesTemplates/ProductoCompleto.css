@@ -124,6 +124,8 @@
     padding: 3%;
     position: relative;
     top: -25%;
+    left: -2%;
+    
 }
 
 .tituloRecomendado{
@@ -139,9 +141,7 @@
 
 .remeraRecomendada{
     width: 40%;
+    min-height: 72.61px;
 }
 
-.Carousel{
-    position: relative;
-    left: -2%;
-}
+

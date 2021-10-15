@@ -21,7 +21,7 @@ export default function ModalAgregar() {
     const handleShow = () => setShow(true);
     const handleImageAsFile = (e) => {
       const image = e.target.files[0]
-      setImageAsFile(imageFile => (image))
+      setImageAsFile(_imageFile => (image))
   }
 
   const subirImagen = () =>{

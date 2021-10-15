@@ -31,7 +31,7 @@ export default function CardProducto(props){
        
          <Col md="1">
              <Card className="cardProducto" style={{ width: '90%' }}>
-             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{maxHeight:'120px', minHeight:'120px', maxWidth:'116px', minWidth:'116px'}} /></button>
+             <button style={{background:"#603bbb00"}} onClick={()=>verProducto(producto.idProducto, url)} ><img variant="top" src={url} style= {{maxHeight:'120px', minHeight:'120px', width:'100%'}} /></button>
                          <Card.Body>
                             <Card.Title>{producto.nameProducto}</Card.Title>
                             <Card.Text className="precio">${producto.precioProducto} </Card.Text>

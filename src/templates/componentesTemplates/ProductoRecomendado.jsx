@@ -27,7 +27,7 @@ export default function ProductoRecomendado(props){
     getImages()
 
     return (
-    <Card className="prodRecomendados" style={{ width: '90%'}}>
+    <Card className="prodRecomendados" style={{ width: '80%'}}>
 
             <img className="remeraRecomendada" src={url} />
             <Card.Title style={{marginTop:'-35%'}} className="tituloRecomendado">{producto.nameProducto}</Card.Title>
