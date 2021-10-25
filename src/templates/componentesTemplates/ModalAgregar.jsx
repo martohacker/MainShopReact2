@@ -5,6 +5,7 @@ import axios from "axios";
 import store from '../../store/index';
 import db from "../../firebase";
 import "../templates.css"
+import SubirTalles from "./SubirTalles";
 
 export default function ModalAgregar() {
     const [show, setShow] = useState(false);
@@ -41,6 +42,7 @@ export default function ModalAgregar() {
     function handleSubmit(){            
         const idMarca = getIdMarca();
         subirImagen();
+        console.log(imagen);
         const params = new URLSearchParams();
         params.append('id', idMarca);
         params.append('nameProducto', nombre);
@@ -48,7 +50,7 @@ export default function ModalAgregar() {
         params.append('precioProducto', precio);
         params.append('tipoDeProducto', tipo);
         params.append('idProducto', 'KSDFKkdsakffks34');
-        params.append('imagen', imagen);
+        params.append('imagen', imageAsFile.name);
 
 
         console.log(imagen);
@@ -108,6 +110,7 @@ export default function ModalAgregar() {
                             <Col sm="10">
                               <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
                            </Col>
+                          <SubirTalles></SubirTalles>
                       </Form.Group>
                </Form>
                <Button className="Cancelar" variant="secondary" onClick={handleClose}>

@@ -7,7 +7,7 @@ import remera from "../templates/componentesTemplates/RemeraAzul.png";
 
 
 export default function Template1(props) {
-const {tipo, url, productos} = props;
+const {id, idMarca, tipo, url, productos} = props;
 const [productoAVer, setProductoAVer] = useState("");
 const [boton, setBoton] = useState(false);
 const [urlProd, setUrl] = useState("");
@@ -31,7 +31,7 @@ function verProducto(idProducto, url){
          <img src={url} className="logo" ></img>
         <Row style={{marginLeft:0, marginRight:0}}>
     {productos.map((prod)=>(
-            <CardProducto tipo={tipo} key={prod.idProducto} verProducto={verProducto} producto={prod} />
+            <CardProducto id={id} idMarca={idMarca} tipo={tipo} key={prod.idProducto} verProducto={verProducto} producto={prod} />
         )) }
         
         </Row>

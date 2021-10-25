@@ -11,6 +11,7 @@ import store from '../store/index';
 import { render } from "@testing-library/react";
 import "./HomeUser.css"
 import CardProducto from "../templates/componentesTemplates/CardProducto";
+import Carrito from "./Carrito";
 
 export default function HomeUser(props){
     const {handleLogout, tipo}=props;
@@ -19,15 +20,16 @@ export default function HomeUser(props){
     const [url, setUrl] = useState("");
     const [productos, setProductos] = useState([]);
     const [boton, setBoton] = useState(false);
+    const [id, setId] = useState("");
 
     useEffect(() => {
-        let cont;
         async function GiveMeBrands() {
+            getId();
             await axios.get("http://localhost:8000/ListadoMarcas").then((res) => {
                 console.log(res.data);
                 console.log("entre al use effect")
                 setMarcas(res.data);
-                cont++;
+                
             }).catch((error) => {
                 console.log(error)
             });
@@ -35,6 +37,12 @@ export default function HomeUser(props){
         
         GiveMeBrands();
     }, [boton])
+
+    function getId() {
+        const state = store.getState();
+        const id = state.id;
+        setId(id);
+      }
 
     useEffect(() => {
        cargarLogos(marcaAVer);
@@ -88,22 +96,31 @@ export default function HomeUser(props){
         return(
                 <>
                 <Header setBoton={setBoton} boton={boton} handleLogout={handleLogout}/>
-                {marcaAVer && boton ?(
-                    <Template1User url={url} productos={productos} tipo={marcaAVer.tipoCuenta} />
-                ):(
-                    <>
-                    <Row>
-                    { marcas.map((marca)=>(
-                        <Col md={2}>
-                            <div onClick={()=>handleTemplate(marca)}>
-                             <Image className="logoHomeUser" id={marca.name} />
-                             </div>
-                        </Col>
-                    )) }
-                    </Row>
-                    </>
-                )}
-                    
+                <Router>
+                    <Switch>
+                      <Route path="/Carrito">
+                          <Carrito/>
+                      </Route>
+                      <Route path="/">
+                        {marcaAVer && boton ?(
+                        <Template1User url={url} productos={productos} tipo={marcaAVer.tipoCuenta} idMarca={marcaAVer.id} id={id} />
+                            ):(
+                                <>
+                                <Row>
+                                { marcas.map((marca)=>(
+                                    <Col md={2}>
+                                        <div onClick={()=>handleTemplate(marca)}>
+                                        <Image className="logoHomeUser" id={marca.name} />
+                                        </div>
+                                    </Col>
+                                )) }
+                                </Row>
+                                </>
+                            )}
+                      </Route>
+                    </Switch>
+                </Router>
+                  
                 
                 </>
         )
