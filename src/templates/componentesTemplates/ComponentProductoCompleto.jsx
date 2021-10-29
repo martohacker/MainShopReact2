@@ -13,7 +13,7 @@ import CarouselProds from "./CarouselProds";
 
 
 export default function (props){
-    const {verProducto, producto, productos, url} = props;
+    const {verProducto, producto, productos, url, agregar} = props;
     return (
       
             <Row>   
@@ -28,7 +28,7 @@ export default function (props){
                     <h4 className="Metodos" >Métodos de pago</h4>
                      <ComponentElegirTalle talles={producto.descripcion.talle}/>
                     <ElegirColor colores={producto.descripcion.color} /> 
-                    <Button style={{backgroundColor:'#E3EFF4', color:'#22B8FA'}} className="Agregar">Agregar al carrito</Button>
+                    <Button style={{backgroundColor:'#E3EFF4', color:'#22B8FA'}} onClick={()=>agregar(producto.idProducto)} className="Agregar">Agregar al carrito</Button>
                     <Button className="Comprar">Comprar ahora</Button>
                  </div>
                  <h1 className="recomendacion">Productos recomendados</h1>

@@ -17,12 +17,38 @@ export default function ModalAgregar() {
     const [imageAsFile, setImageAsFile] = useState('')
     const [imageAsUrl, setImageAsUrl] = useState(allInputs);
     const [imagen, setImagen] = useState("");
+    const [talles, setTalles] = useState({});
+    const [xxs, setXxs] = useState(false);
+    const [xs, setXs] = useState(false);
+    const [s, setS] = useState(false);
+    const [m, setM] = useState(false);
+    const [l, setL] = useState(false);
+    const [xl, setXl] = useState(false);
+    const [xxl, setXxl] = useState(false);
+    const [cantXxs, setCantXxs] = useState(0);
+    const [cantXs, setCantXs] = useState(0);
+    const [cantS, setCantS] = useState(0);
+    const [cantM, setCantM] = useState(0);
+    const [cantL, setCantL] = useState(0);
+    const [cantXl, setCantXl] = useState(0);
+    const [cantXxl, setCantXxl] = useState(0);
+    
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleImageAsFile = (e) => {
       const image = e.target.files[0]
       setImageAsFile(_imageFile => (image))
+  }
+
+  const handleTallesValues = () =>{
+      setTalles({Xxs:cantXxs,
+                   Xs:cantXs, 
+                   S:cantS,
+                   M:cantM,
+                   L:cantL,
+                  Xl:cantXl,
+                  Xxl:cantXxl });
   }
 
   const subirImagen = () =>{
@@ -42,6 +68,7 @@ export default function ModalAgregar() {
     function handleSubmit(){            
         const idMarca = getIdMarca();
         subirImagen();
+        handleTallesValues();
         console.log(imagen);
         const params = new URLSearchParams();
         params.append('id', idMarca);
@@ -51,8 +78,9 @@ export default function ModalAgregar() {
         params.append('tipoDeProducto', tipo);
         params.append('idProducto', 'KSDFKkdsakffks34');
         params.append('imagen', imageAsFile.name);
+        params.append('talles', Object.entries(talles));
 
-
+        console.log(talles);
         console.log(imagen);
         console.log(params);
         console.log(nombre);
@@ -108,9 +136,13 @@ export default function ModalAgregar() {
                              Precio
                         </Form.Label>
                             <Col sm="10">
-                              <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
+                              <Form.Control style={{backgroundColor:'#2125294d', marginBottom:'5%'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" />
                            </Col>
-                          <SubirTalles></SubirTalles>
+                          <SubirTalles
+                           talles={talles} setTalles={setTalles}
+                           xxs={xxs} xs={xs}s={s}m={m}l={l}xl={xl}xxl={xxl}setXxs={setXxs} setXs={setXs}setS={setS}setM={setM}setL={setL}setXl={setXl}setXxl={setXxl}
+                           cantXxs={cantXxs} cantXs={cantXs}cantS={cantS}cantM={cantM}cantL={cantL}cantXl={cantXl}cantXxl={cantXxl}setCantXxs={setCantXxs} setCantXs={setCantXs}setCantS={setCantS}setCantM={setCantM}setCantL={setCantL}setCantXl={setCantXl}setCantXxl={setCantXxl}
+                           />
                       </Form.Group>
                </Form>
                <Button className="Cancelar" variant="secondary" onClick={handleClose}>

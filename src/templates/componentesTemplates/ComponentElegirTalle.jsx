@@ -29,20 +29,39 @@ export default function ControlledOpenSelect(props) {
     setAge(event.target.value);
   };
 
+
+function createArrayTalles(){
+    const arrayTalles = splitTalles();
+    return arrayTalles;
+}
+
+function splitTalles(){
+   const tallesSplit = talles.split(',');
+   const arrayTalles=[];
+   for (let x = 0; x < tallesSplit.length; x++) {
+       if(x%2==0){
+          arrayTalles.push([tallesSplit[x], tallesSplit[x+1]]);
+       }    
+   }
+   return arrayTalles;
+}
+
   const validarTalles = () => {
-    if(talles.XS>0){
+    createArrayTalles()
+    const arrayTalles=splitTalles()
+    if(arrayTalles[0][1]>0){
       tallesDisp.push("XS")
     }
-    if(talles.S>0){
+    if(arrayTalles[1][1]>0){
       tallesDisp.push("S")
     }
-    if(talles.M>0){
+    if(arrayTalles[2][1]>0){
       tallesDisp.push("M")
     }
-    if(talles.L>0){
+    if(arrayTalles[3][1]>0){
       tallesDisp.push("L")
     }
-    if(talles.XL>0){
+    if(arrayTalles[4][1]>0){
       tallesDisp.push("XL")
     }
 

@@ -1,41 +1,68 @@
 import React, { useEffect, useState } from "react";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col, Modal, InputGroup} from 'react-bootstrap';
+import "../templates.css";
 
-export default function SubirTalles(){
 
-    const [xxs, setXxs] = useState(false);
-    const [xs, setXs] = useState(false);
-    const [s, setS] = useState(false);
-    const [m, setM] = useState(false);
-    const [l, setL] = useState(false);
-    const [xl, setXl] = useState(false);
-    const [xxl, setXxl] = useState(false);
+export default function SubirTalles(props){
+  const {talles, setTalles, xxs, setXxs, xs, setXs, s, setS, m, setM, l, setL, xl, setXl, xxl, setXxl,
+  cantXxs,cantXs,cantS,cantM,cantL,cantXl,cantXxl,setCantXxs,setCantXs,setCantS,setCantM,setCantL,setCantXl,setCantXxl} = props;
+
+    
+    
     
 
+    const handleValue = (event) => {
+      switch (event.target.name) {
+        case "cantXxs":
+          setCantXxs(event.target.value);
+          console.log(event)
+          break;
+      case "cantXs":
+              setCantXs(event.target.value);
+              break;
+      case "cantS":
+                  setCantS(event.target.value)
+                  break;
+      case "cantM":
+                  setCantM(event.target.value)
+                      break;
+      case "cantL":
+                  setCantL(event.target.value)
+                      break;
+      case "cantXl":
+                  setCantXl(event.target.value);
+                              break;
+      case "cantXxl":
+                  setCantXxl(event.target.value);
+                                              break;
+          
+        
+      }
+    }
 
     const handleChange = (event) => {
         switch (event.target.name) {
           case "xxs":
-            setXxs(event.target.value);
+            setXxs(!xxs);
             break;
         case "xs":
-                setXs(event.target.value);
+                setXs(!xs);
                 break;
         case "s":
-                    setS(event.target.value);
+                    setS(!s);
                     break;
         case "m":
-                    setM(event.target.value);
+                    setM(!m);
                         break;
         case "l":
-                    setL(event.target.value);
+                    setL(!l);
                         break;
         case "xl":
-                    setXl(event.target.value);
+                    setXl(!xl);
                                 break;
         case "xxl":
-                    setXxl(event.target.value);
+                    setXxl(!xxl);
                                                 break;
             
           
@@ -52,7 +79,18 @@ export default function SubirTalles(){
           name="xxs"
         />
         {xxs?(
-            <InputGroup name="cantXxs" placeholder="cantidad de xxs"/>
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantXxs"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
         ):(<h1></h1>)}
         <Form.Check 
           type="switch"
@@ -61,41 +99,125 @@ export default function SubirTalles(){
           onClick={handleChange}
           name="xs"
         />
+        {xs?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantXs"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
         <Form.Check 
-          disabled
+          onClick={handleChange}
           type="switch"
           label="s"
-          id="disabled-custom-switch"
+          id="custom-switch"
           name="s"
         />
+        {s?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantS"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
         <Form.Check 
-          disabled
+          onClick={handleChange}
           type="switch"
           label="m"
-          id="disabled-custom-switch"
+          id="custom-switch"
           name="m"
         />
+        {m?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantM"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
         <Form.Check 
-          disabled
+          onClick={handleChange}
           type="switch"
           label="l"
-          id="disabled-custom-switch"
+          id="custom-switch"
           name="l"
         />
+        {l?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantL"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
         <Form.Check 
-          disabled
+          onClick={handleChange}
           type="switch"
           label="xl"
-          id="disabled-custom-switch"
+          id="custom-switch"
           name="xl"
         />
+        {xl?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantXl"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
         <Form.Check 
-          disabled
+          onClick={handleChange}
           type="switch"
           label="xxl"
-          id="disabled-custom-switch"
+          id="custom-switch"
           name="xxl"
         />
+        {xxl?(
+          <div className="inputTalles">
+          <InputGroup className="mb-3">
+          <FormControl
+            onChange={handleValue}
+            name="cantXxl"
+            type="number"
+            placeholder="Cant"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        </div>
+        ):(<h1></h1>)}
       </Form>
     )
    

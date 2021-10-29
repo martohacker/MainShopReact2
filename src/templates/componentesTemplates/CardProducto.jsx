@@ -12,7 +12,7 @@ import AgregarCarrito from "./AgregarCarrito";
 import ComprarAhora from "./ComprarAhora";
 
 export default function CardProducto(props){
-    const {id, idMarca, producto, verProducto, tipo} = props;
+    const {id, idMarca, producto, verProducto, tipo, agregar} = props;
     const [url, setUrl] = useState(remera);
 
     async function getImages(){
@@ -43,7 +43,7 @@ export default function CardProducto(props){
                 </>
              ):(
                <>
-               <AgregarCarrito id={id} idMarca={idMarca} idProducto={producto.idProducto}/>
+               <AgregarCarrito agregar={()=>agregar(producto.idProducto)} />
                <ComprarAhora/>
                </>
              )}
