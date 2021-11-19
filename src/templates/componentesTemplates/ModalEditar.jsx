@@ -59,19 +59,19 @@ export default function ModalAgregar(props) {
                      Nombre
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" value={producto.nameProducto} />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setNombre(event.target.value)} type="text" placeholder="Nombre" defaultValue={producto.nameProducto} />
                      </Col>
                      <Form.Label column sm="2">
                      Tipo
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" value={producto.tipoDeProducto} />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setTipo(event.target.value)} type="text" placeholder="Tipo" defaultValue={producto.tipoDeProducto} />
                      </Col>
                      <Form.Label column sm="2">
                      Precio
                   </Form.Label>
                      <Col sm="10">
-                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" value={producto.precioProducto} />
+                         <Form.Control style={{backgroundColor:'#2125294d'}} onChange={(event) => setPrecio(event.target.value)} type="text" placeholder="Precio" defaultValue={producto.precioProducto} />
                      </Col>
             </Form.Group>
 </Form>
