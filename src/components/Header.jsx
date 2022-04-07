@@ -21,15 +21,6 @@ export default function Header(props){
                     <img className="logoHome" src={logo}/>
                 </div>
             </Navbar.Brand>
-            <Router>
-                <div>
-                    <ul>
-                        <li>
-                          <Link to ="/Carrito">Mi carrito</Link>
-                        </li>
-                    </ul>
-                </div>
-            </Router>
              <Button className="logout" onClick={handleLogout}>Logout</Button>
         </Navbar>
       )

@@ -1,6 +1,6 @@
 import { Col, Container, Row, InputGroup, FormControl } from "react-bootstrap";
 import CardProducto from "./componentesTemplates/CardProducto";
-import Logo from "./componentesTemplates/LogoNike.png"
+import Logo from "./componentesTemplates/LogoZara.png"
 import './templates.css';
 import ModalAgregar  from "./componentesTemplates/ModalAgregar";
 import ComponentProductoCompleto from "./componentesTemplates/ComponentProductoCompleto";
@@ -28,7 +28,7 @@ function verProducto(idProducto, url){
             <ComponentProductoCompleto url={urlProd} verProducto={verProducto} productos={productos} producto = {productoAVer} />
         ) : (
         <>
-         <img src={Logo} className="logo"></img>
+         <img src={Logo}  className="logo"></img>
      <Row>
          <Col md="2">
              <ModalAgregar/>

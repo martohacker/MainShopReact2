@@ -168,8 +168,6 @@ export default function App() {
   async function traerTipo(id){
     try{
       const res =  await axios.get("http://localhost:8000/TraerTipo?id="+id);
-      console.log("hola" + res.data);
-
       setTipoUsuario(res.data);
     }catch(error){
       console.log(error);
